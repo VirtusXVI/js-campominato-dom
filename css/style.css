@@ -59,3 +59,11 @@ header{
     height: calc(100% / 7);
     width: calc(100% / 7);
 }
+
+.right{
+    background-color: lightgreen;
+}
+
+.wrong{
+    background-color: lightcoral;
+}

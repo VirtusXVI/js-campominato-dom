@@ -6,7 +6,9 @@ function(){
     container.innerHTML = "";
     let userDifficulty = userInput();
     boxGen(userDifficulty);
-    // let bombs = gameBombs();
+    let box = document.querySelector("span");
+    console.log(box)
+    let bombs = gameBombs();
     // L'utente indica un livello di difficoltà in base al quale viene generata una griglia di gioco quadrata, in cui ogni cella contiene un numero tra quelli compresi in un range:
     // con difficoltà 1 => tra 1 e 100
     // con difficoltà 2 => tra 1 e 81
@@ -47,6 +49,7 @@ function(){
                 newCell.classList.add("size");
                 newCell.classList.add("easy");
                 container.append(newCell);
+                newCell.addEventListener("click", onBoxClick);
             }
         } else if(userDifficulty === 81){
             for(let i = 1;i <= userDifficulty; i++){
@@ -57,6 +60,7 @@ function(){
                 newCell.classList.add("size");
                 newCell.classList.add("hard");
                 container.append(newCell);
+                newCell.addEventListener("click", onBoxClick);
             }
         } else if(userDifficulty === 49){
             for(let i = 1;i <= userDifficulty; i++){
@@ -67,18 +71,23 @@ function(){
                 newCell.classList.add("size");
                 newCell.classList.add("crazy");
                 container.append(newCell);
+                newCell.addEventListener("click", onBoxClick);
             }
         }
     }
     function gameBombs(){
         let bombs = [];
         while(bombs.length <= 16){
-            let singleBomb = Math.floor(Math.random() * gameDifficulty + 1);
+            let singleBomb = Math.floor(Math.random() * userDifficulty + 1);
             if(!bombs.includes(singleBomb)){
                 bombs.push(singleBomb);
             }
         }
         return bombs;
+    }
+
+    function onBoxClick(){
+
     }
 }
 )
