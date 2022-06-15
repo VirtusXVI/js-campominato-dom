@@ -46,16 +46,16 @@ header{
 }
 
 .easy{
-    height: calc(100% / 8);
-    width: calc(100% / 8);
+    height: calc(100% / 10);
+    width: calc(100% / 10);
 }
 
 .hard{
-    height: calc(100% / 8);
-    width: calc(100% / 8);
+    height: calc(100% / 9);
+    width: calc(100% / 9);
 }
 
 .crazy{
-    height: calc(100% / 8);
-    width: calc(100% / 8);
+    height: calc(100% / 7);
+    width: calc(100% / 7);
 }
