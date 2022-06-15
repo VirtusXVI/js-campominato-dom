@@ -12,6 +12,11 @@ header{
     padding: 1rem 0;
 }
 
+.ms_page_alignment{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /* FORM */
 
 .form-select{
@@ -21,13 +26,36 @@ header{
 
 /* BOXES */
 
+.ms_box_container{
+    height: 600px;
+    width: 600px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
 .box{
     background-color: lightcoral;
+    border: 2px solid black;
 }
 .box.size{
-    height: calc(100% / 8);
-    width: calc(100% / 8);
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.easy{
+    height: calc(100% / 8);
+    width: calc(100% / 8);
+}
+
+.hard{
+    height: calc(100% / 8);
+    width: calc(100% / 8);
+}
+
+.crazy{
+    height: calc(100% / 8);
+    width: calc(100% / 8);
 }
