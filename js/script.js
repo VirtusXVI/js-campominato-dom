@@ -1,10 +1,12 @@
-// let bombs = gameBombs();
 let button = document.querySelector(".btn");
 let mainGridClass;
 button.addEventListener("click", 
 function(){
+    let container = document.querySelector(".ms_box_container");
+    container.innerHTML = "";
     let userDifficulty = userInput();
     boxGen(userDifficulty);
+    // let bombs = gameBombs();
     // L'utente indica un livello di difficoltà in base al quale viene generata una griglia di gioco quadrata, in cui ogni cella contiene un numero tra quelli compresi in un range:
     // con difficoltà 1 => tra 1 e 100
     // con difficoltà 2 => tra 1 e 81
@@ -13,7 +15,6 @@ function(){
         let userCheck = false;
         let userChoice = parseInt(document.querySelector(".form-select").value);
         while(userCheck === false){
-            // let userChoice = parseInt(prompt("inserisci il livello di difficoltà(1-2-3)"));
             let gameDifficulty = 0;
             switch(userChoice) {
                 case 1:
@@ -37,7 +38,6 @@ function(){
         }
     }
     function boxGen(userDifficulty){
-        let container = document.querySelector(".ms_box_container");
         if(userDifficulty === 100){
             for(let i = 1;i <= userDifficulty; i++){
                 // container.(`<div class="box size easy"><span>${i}</span></div>`);
@@ -46,8 +46,6 @@ function(){
                 newCell.classList.add("box");
                 newCell.classList.add("size");
                 newCell.classList.add("easy");
-                console.log(newCell);
-                console.log(container);
                 container.append(newCell);
             }
         } else if(userDifficulty === 81){
@@ -58,8 +56,6 @@ function(){
                 newCell.classList.add("box");
                 newCell.classList.add("size");
                 newCell.classList.add("hard");
-                console.log(newCell);
-                console.log(container);
                 container.append(newCell);
             }
         } else if(userDifficulty === 49){
@@ -70,27 +66,25 @@ function(){
                 newCell.classList.add("box");
                 newCell.classList.add("size");
                 newCell.classList.add("crazy");
-                console.log(newCell);
-                console.log(container);
                 container.append(newCell);
             }
         }
+    }
+    function gameBombs(){
+        let bombs = [];
+        while(bombs.length <= 16){
+            let singleBomb = Math.floor(Math.random() * gameDifficulty + 1);
+            if(!bombs.includes(singleBomb)){
+                bombs.push(singleBomb);
+            }
+        }
+        return bombs;
     }
 }
 )
 
 // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
 // I numeri nella lista delle bombe non possono essere duplicati.
-function gameBombs(){
-    let bombs = [];
-    while(bombs.length <= 16){
-        let singleBomb = Math.floor(Math.random() * gameDifficulty + 1);
-        if(!bombs.includes(singleBomb)){
-            bombs.push(singleBomb);
-        }
-    }
-    return bombs;
-}
 // In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina, altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
 // La partita termina quando il giocatore clicca su una bomba o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
