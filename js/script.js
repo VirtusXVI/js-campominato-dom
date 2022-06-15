@@ -20,7 +20,7 @@ function(){
             let gameDifficulty = 0;
             switch(userChoice) {
                 case 1:
-                    gameDifficulty = 10;
+                    gameDifficulty = 100;
                     mainGridClass = "easy";
                     break;
                 case 2:
@@ -40,7 +40,7 @@ function(){
         }
     }
     function boxGen(userDifficulty){
-        if(userDifficulty === 10){
+        if(userDifficulty === 100){
             for(let i = 1;i <= userDifficulty; i++){
                 let newCell = document.createElement("div");
                 newCell.innerHTML = `${i}`;
