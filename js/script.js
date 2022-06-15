@@ -7,6 +7,8 @@ function(){
     let userDifficulty = userInput();
     boxGen(userDifficulty);
     let bombs = gameBombs();
+    console.log(bombs);
+    let winCounter = 0;
     // L'utente indica un livello di difficoltà in base al quale viene generata una griglia di gioco quadrata, in cui ogni cella contiene un numero tra quelli compresi in un range:
     // con difficoltà 1 => tra 1 e 100
     // con difficoltà 2 => tra 1 e 81
@@ -18,7 +20,7 @@ function(){
             let gameDifficulty = 0;
             switch(userChoice) {
                 case 1:
-                    gameDifficulty = 100;
+                    gameDifficulty = 10;
                     mainGridClass = "easy";
                     break;
                 case 2:
@@ -38,35 +40,35 @@ function(){
         }
     }
     function boxGen(userDifficulty){
-        if(userDifficulty === 100){
+        if(userDifficulty === 10){
             for(let i = 1;i <= userDifficulty; i++){
                 let newCell = document.createElement("div");
-                newCell.innerHTML = `<span>${i}</span>`;
+                newCell.innerHTML = `${i}`;
                 newCell.classList.add("box");
                 newCell.classList.add("size");
                 newCell.classList.add("easy");
                 container.append(newCell);
-                newCell.addEventListener("click", onBoxClick);
+                newCell.addEventListener("click", onBoxClick , {once : true});
             }
         } else if(userDifficulty === 81){
             for(let i = 1;i <= userDifficulty; i++){
                 let newCell = document.createElement("div");
-                newCell.innerHTML = `<span>${i}</span>`;
+                newCell.innerHTML = `${i}`;
                 newCell.classList.add("box");
                 newCell.classList.add("size");
                 newCell.classList.add("hard");
                 container.append(newCell);
-                newCell.addEventListener("click", onBoxClick);
+                newCell.addEventListener("click", onBoxClick , {once : true});
             }
         } else if(userDifficulty === 49){
             for(let i = 1;i <= userDifficulty; i++){
                 let newCell = document.createElement("div");
-                newCell.innerHTML = `<span>${i}</span>`;
+                newCell.innerHTML = `${i}`;
                 newCell.classList.add("box");
                 newCell.classList.add("size");
                 newCell.classList.add("crazy");
                 container.append(newCell);
-                newCell.addEventListener("click", onBoxClick);
+                newCell.addEventListener("click", onBoxClick , {once : true});
             }
         }
     }
@@ -76,7 +78,7 @@ function(){
 
     function gameBombs(){
         let bombs = [];
-        while(bombs.length <= 16){
+        while(bombs.length <= 0){
             let singleBomb = Math.floor(Math.random() * userDifficulty + 1);
             if(!bombs.includes(singleBomb)){
                 bombs.push(singleBomb);
@@ -86,9 +88,18 @@ function(){
     }
 
     function onBoxClick(){
-        let number = parseInt(document.querySelector("span").innerHTML);
-        console.log(number);
-        // let box = document.querySelector(".box");
+        let number = parseInt(this.innerHTML);
+        this.classList.add
+        winCounter++;
+        if(bombs.includes(number)){
+            alert("hai perso!");
+            this.classList.add("wrong")
+        }else {
+            this.classList.add("right")
+        }
+        if(winCounter === (userDifficulty - bombs.length)){
+            alert("hai vinto!");
+        }
     }
 }
 )
