@@ -98,7 +98,8 @@ function(){
             this.classList.add("right")
         }
         if(winCounter === (userDifficulty - bombs.length)){
-            alert("hai vinto!");
+            alert(`hai vinto!`);
+            alert(`hai cliccato giusto ${winCounter} volte!`);
         }
     }
 }
