@@ -36,7 +36,6 @@ header{
 }
 
 .box{
-    background-color: lightcoral;
     border: 2px solid black;
 }
 .box.size{

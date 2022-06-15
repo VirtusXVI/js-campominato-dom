@@ -6,8 +6,6 @@ function(){
     container.innerHTML = "";
     let userDifficulty = userInput();
     boxGen(userDifficulty);
-    let box = document.querySelector("span");
-    console.log(box)
     let bombs = gameBombs();
     // L'utente indica un livello di difficoltà in base al quale viene generata una griglia di gioco quadrata, in cui ogni cella contiene un numero tra quelli compresi in un range:
     // con difficoltà 1 => tra 1 e 100
@@ -42,7 +40,6 @@ function(){
     function boxGen(userDifficulty){
         if(userDifficulty === 100){
             for(let i = 1;i <= userDifficulty; i++){
-                // container.(`<div class="box size easy"><span>${i}</span></div>`);
                 let newCell = document.createElement("div");
                 newCell.innerHTML = `<span>${i}</span>`;
                 newCell.classList.add("box");
@@ -53,7 +50,6 @@ function(){
             }
         } else if(userDifficulty === 81){
             for(let i = 1;i <= userDifficulty; i++){
-                // container.(`<div class="box size easy"><span>${i}</span></div>`);
                 let newCell = document.createElement("div");
                 newCell.innerHTML = `<span>${i}</span>`;
                 newCell.classList.add("box");
@@ -64,7 +60,6 @@ function(){
             }
         } else if(userDifficulty === 49){
             for(let i = 1;i <= userDifficulty; i++){
-                // container.(`<div class="box size easy"><span>${i}</span></div>`);
                 let newCell = document.createElement("div");
                 newCell.innerHTML = `<span>${i}</span>`;
                 newCell.classList.add("box");
@@ -75,6 +70,10 @@ function(){
             }
         }
     }
+
+    // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+    // I numeri nella lista delle bombe non possono essere duplicati.
+
     function gameBombs(){
         let bombs = [];
         while(bombs.length <= 16){
@@ -87,13 +86,14 @@ function(){
     }
 
     function onBoxClick(){
-
+        let number = parseInt(document.querySelector("span").innerHTML);
+        console.log(number);
+        // let box = document.querySelector(".box");
     }
 }
 )
 
-// Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
-// I numeri nella lista delle bombe non possono essere duplicati.
+
 // In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina, altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
 // La partita termina quando il giocatore clicca su una bomba o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
